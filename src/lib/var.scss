@@ -1,0 +1,7 @@
+$colorMap: (
+  ligth: #ddd,
+);
+
+@function color($key) {
+  @return map-get($colorMap, $key);
+}
