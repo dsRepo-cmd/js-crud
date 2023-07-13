@@ -1,0 +1,19 @@
+<main>
+  <h1 class='title'>Список товарів</h1>
+  <div class='product'>
+    {{#each list}}
+      <div class='product__card'>
+        <h2 class='product__name'>{{name}}</h2>
+        <p class='product__description'>{{description}}</p>
+        <span class='product__id'>ID: {{id}}</span>
+        <div class='product__fotter'>
+          <p class='product__price'>{{price}}₴</p>
+          <a class='product__edit' href='/product-edit?id={{id}}'>Редагувати</a>
+        </div>
+      </div>
+    {{/each}}
+    <div class='product__card'>
+      <a class='product__button' href='/product-create'>Створити продукт</a>
+    </div>
+  </div>
+</main>
