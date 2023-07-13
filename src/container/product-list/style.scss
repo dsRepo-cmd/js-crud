@@ -1,0 +1,80 @@
+@use '../../lib/service.scss' as s;
+main {
+  gap: s.space(10);
+  margin: s.space(4);
+}
+
+.title {
+  color: s.color('primary');
+  font-size: 36px;
+  font-weight: bold;
+  padding-bottom: s.space(1);
+}
+
+.product {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: s.space(20) s.space(10);
+
+  margin: s.space(4);
+  padding: s.space(4);
+  border-radius: 10px;
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: space-between;
+    word-break: break-all;
+
+    box-shadow: 3px 1px 10px 1px rgba(158, 158, 158, 0.252);
+    gap: s.space(10);
+    border: 1px solid s.color('ligth');
+    border-radius: 10px;
+    padding: s.space(6);
+  }
+  &__card:last-of-type {
+    justify-content: center;
+    box-shadow: none;
+    border: none;
+  }
+  &__name {
+    font-size: 24px;
+  }
+  &__description {
+    font-size: 16px;
+    height: 100%;
+  }
+  &__id {
+    color: s.color('dark_ligth');
+    font-size: 16px;
+  }
+  &__name {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  &__fotter {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__price {
+    font-size: 24px;
+  }
+  &__edit {
+    @include s.click;
+    font-size: 20px;
+    text-decoration: none;
+  }
+  &__button {
+    @include s.click;
+    width: 100%;
+    color: s.color('hite');
+    border: 1px solid s.color('ligth');
+    padding: s.space(3);
+    border-radius: 5px;
+    background-color: s.color('dark');
+    text-decoration: none;
+    text-align: center;
+    text-align: center;
+  }
+}

@@ -5,6 +5,7 @@
   flex-direction: column;
   padding: s.space(4);
   gap: s.space(8);
+  min-width: 50%;
 
   &__title {
     font-size: 20px;
@@ -50,4 +51,35 @@ main {
     padding-top: 5px;
     padding-bottom: 5px;
   }
+}
+
+.product {
+  margin: s.space(10);
+  padding: s.space(10);
+  border: 1px solid s.color('ligth');
+  border-radius: 10px;
+
+  &__form {
+    margin: s.space(50);
+  }
+}
+
+.header {
+  display: flex;
+  padding: s.space(5);
+  background-color: s.color('ligth');
+  border-radius: 5px;
+  &__button {
+    @include s.click;
+    text-decoration: none;
+    color: s.color('hite');
+    background-color: s.color('primary');
+    padding: s.space(2);
+    border-radius: 5px;
+  }
+}
+
+.forms {
+  display: flex;
+  gap: s.space(5);
 }

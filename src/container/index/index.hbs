@@ -2,9 +2,12 @@
 Це код container файлу для index сторінки, 
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
  }}
-
+<header class='header'>
+  <a class='header__button' href='/product-list'>Модуль product</a>
+</header>
 <main class='main'>
-  <section>
+
+  <section class='forms'>
     <div class='form'>
       <h1 class='form__title'>Create user</h1>
       <form method='POST' action='/user-create'>
@@ -31,34 +34,7 @@
         </div>
       </form>
     </div>
-  </section>
-  <section>
-    <div class='form'>
-      <h1 class='form__title'>Users list</h1>
-      <div class='user-list'>
-        {{#with data.users}}
-          {{#if isEmpty}}
-            <mark>Empty</mark>
-          {{else}}
-            <ul>
-              {{#each list}}
-                <li>
-                  {{email}}
-                  |
-                  {{login}}
-                  |
-                  {{id}}
-                  <a href='/user-delete?id={{id}}'>(delete)</a>
-                </li>
-              {{/each}}
-            </ul>
-          {{/if}}
-        {{/with}}
-      </div>
-    </div>
-  </section>
 
-  <section>
     <div class='form'>
       <h1 class='form__title'>Update user email</h1>
       <form method='POST' action='/user-update'>
@@ -86,6 +62,35 @@
       </form>
     </div>
   </section>
+
+  <section>
+    <div class='form'>
+      <h1 class='form__title'>Users list</h1>
+      <div class='user-list'>
+        {{#with data.users}}
+          {{#if isEmpty}}
+            <mark>Empty</mark>
+          {{else}}
+            <ul>
+              {{#each list}}
+                <li>
+                  {{email}}
+                  |
+                  {{login}}
+                  |
+                  {{id}}
+                  <a href='/user-delete?id={{id}}'>(delete)</a>
+                </li>
+              {{/each}}
+            </ul>
+          {{/if}}
+        {{/with}}
+      </div>
+    </div>
+  </section>
+
+  {{! <section>
+  </section> }}
 
 </main>
 

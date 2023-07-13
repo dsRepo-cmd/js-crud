@@ -1,0 +1,74 @@
+@use '../../lib/service.scss' as s;
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: s.space(10);
+  margin: s.space(4);
+}
+
+.title {
+  color: s.color('primary');
+  font-size: 36px;
+  font-weight: bold;
+  padding-bottom: s.space(1);
+}
+
+.product {
+  margin: s.space(8);
+  border: 1px solid s.color('ligth');
+  box-shadow: 3px 1px 10px 1px rgba(158, 158, 158, 0.252);
+  border-radius: 10px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: s.space(4);
+  gap: s.space(8);
+
+  &__title {
+    color: s.color('dark');
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: s.space(1);
+  }
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    gap: s.space(10);
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: s.space(2);
+  }
+  &__label {
+    color: s.color('dark_ligth');
+    font-size: 14px;
+  }
+  &__input {
+    border: 1px solid s.color('ligth');
+    padding: s.space(2);
+    border-radius: 5px;
+  }
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: s.space(4);
+    margin-top: 20px;
+  }
+  &__info {
+    color: s.color('dark_ligth');
+    font-size: 12px;
+  }
+  &__button {
+    @include s.click;
+    color: s.color('hite');
+    border: 1px solid s.color('ligth');
+    padding: s.space(2);
+    border-radius: 4px;
+    background-color: s.color('primary');
+  }
+}
