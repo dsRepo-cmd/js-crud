@@ -1,11 +1,39 @@
 @use '../../lib/service.scss' as s;
 
+// .header {
+//   display: flex;
+//   padding: s.space(3);
+//   background-color: s.color('dark');
+//   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+//     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+//   margin-bottom: s.space(2);
+
+//   &__button {
+//     @include s.click;
+//     text-decoration: none;
+//     color: s.color('dark');
+//     background-color: s.color('ligth');
+//     padding: s.space(2);
+//     border-radius: 5px;
+//   }
+// }
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: s.space(10);
+}
+
 .form {
   display: flex;
   flex-direction: column;
   padding: s.space(4);
   gap: s.space(8);
   min-width: 50%;
+  min-width: s.space(100);
+
+  border: 1px solid s.color('ligth');
+  border-radius: 5px;
 
   &__title {
     font-size: 20px;
@@ -32,6 +60,7 @@
     border-radius: 5px;
   }
   &__button {
+    @include s.click;
     border: 1px solid s.color('ligth');
     padding: s.space(2);
     border-radius: 20px;
@@ -39,43 +68,11 @@
   }
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  gap: s.space(10);
-}
-
 .user-list {
   li {
     padding-right: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
-  }
-}
-
-.product {
-  margin: s.space(10);
-  padding: s.space(10);
-  border: 1px solid s.color('ligth');
-  border-radius: 10px;
-
-  &__form {
-    margin: s.space(50);
-  }
-}
-
-.header {
-  display: flex;
-  padding: s.space(5);
-  background-color: s.color('ligth');
-  border-radius: 5px;
-  &__button {
-    @include s.click;
-    text-decoration: none;
-    color: s.color('hite');
-    background-color: s.color('primary');
-    padding: s.space(2);
-    border-radius: 5px;
   }
 }
 

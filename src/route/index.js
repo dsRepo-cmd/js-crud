@@ -16,7 +16,11 @@ class User {
   veryfyPassword = (password) => this.password === password
 
   static add = (user) => {
-    this.#list.push(user)
+    if (user) {
+      this.#list.push(user)
+      return true
+    }
+    return false
   }
   static getList = () => this.#list
 
@@ -110,11 +114,15 @@ class Product {
 // ↙️ тут вводимо шлях (PATH) до сторінки
 router.get('/', function (req, res) {
   // res.render генерує нам HTML сторінку
+
   const list = User.getList()
   // ↙️ cюди вводимо назву файлу з сontainer
+  const { id } = req.query
+  const editList = User.getById(Number(id))
   res.render('index', {
     // вказуємо назву папки контейнера, в якій знаходяться наші стилі
     style: 'index',
+    editList,
     data: {
       users: {
         list,
@@ -130,8 +138,8 @@ router.post('/user-create', function (req, res) {
   const { email, login, password } = req.body
 
   const user = new User(email, login, password)
+
   User.add(user)
-  console.log(User.getList())
 
   res.render('success-info', {
     style: 'success-info',
@@ -228,7 +236,7 @@ router.get('/product-edit', function (req, res) {
 router.post('/product-edit', function (req, res) {
   const { name, price, id, description } = req.body
 
-  Product.getById(id)
+  Product.getById(Number(id))
 
   const data = {
     name: name,
