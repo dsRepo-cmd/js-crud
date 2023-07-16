@@ -1,6 +1,6 @@
-<header class='header'>
+{{! <header class='header'>
   <a class='header__button' href='/product-list'>Модуль product</a>
-</header>
+</header> }}
 <main class='main'>
 
   <section class='forms'>
@@ -39,13 +39,23 @@
             <label for='id' class='form__label'>
               ID:
             </label>
-            <input type='id' name='id' class='form__input' />
+            <input
+              value='{{editList.id}}'
+              type='id'
+              name='id'
+              class='form__input'
+            />
           </div>
           <div class='form__field'>
             <label for='email' class='form__label'>
               Email address:
             </label>
-            <input type='email' name='email' class='form__input' />
+            <input
+              value='{{editList.email}}'
+              type='email'
+              name='email'
+              class='form__input'
+            />
           </div>
           <div class='form__field'>
             <label for='password' class='form__label'>
@@ -74,7 +84,7 @@
                   |
                   {{login}}
                   |
-                  {{id}}
+                  <a href='/?id={{id}}' id='{{id}}'>{{id}}</a>
                   <a href='/user-delete?id={{id}}'>(delete)</a>
                 </li>
               {{/each}}
