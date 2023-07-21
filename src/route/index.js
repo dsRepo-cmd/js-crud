@@ -81,18 +81,19 @@ class Product {
 
   static updateById(id, data) {
     const product = this.getById(id)
+    product.name = data.name
+    product.price = data.price
+    product.description = data.description
     if (product) {
       if (data.name) {
-        product.name = data.name
+        return true
       }
       if (data.price) {
-        product.price = data.price
+        return true
       }
       if (data.description) {
-        product.description = data.description
+        return true
       }
-
-      return true
     }
     return false
   }
@@ -111,16 +112,14 @@ class Product {
 
 // router.get Створює нам один ентпоїнт
 
-// ↙️ тут вводимо шлях (PATH) до сторінки
 router.get('/', function (req, res) {
-  // res.render генерує нам HTML сторінку
-
   const list = User.getList()
-  // ↙️ cюди вводимо назву файлу з сontainer
+
   const { id } = req.query
+
   const editList = User.getById(Number(id))
+
   res.render('index', {
-    // вказуємо назву папки контейнера, в якій знаходяться наші стилі
     style: 'index',
     editList,
     data: {
@@ -130,7 +129,6 @@ router.get('/', function (req, res) {
       },
     },
   })
-  // ↑↑ сюди вводимо JSON дані
 })
 
 // ================================================================

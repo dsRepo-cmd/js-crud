@@ -7,18 +7,17 @@ main {
 .form {
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: 16px 60px;
   gap: 32px;
-  min-width: 50%;
-  min-width: 400px;
+  align-items: center;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 15px;
+  box-shadow: 3px 1px 10px 1px rgba(158, 158, 158, 0.252);
 }
 .form__title {
   font-size: 20px;
   font-weight: bold;
   padding-bottom: 4px;
-  border-bottom: 1px solid #ddd;
 }
 .form__content {
   display: grid;
@@ -61,7 +60,20 @@ main {
 
 .forms {
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  gap: 80px;
+}
+
+.list {
+  margin: auto;
+  min-width: 40%;
+}
+.list__button {
+  text-decoration: none;
+}
+
+.danger {
+  color: rgb(223, 46, 46);
 }
 
 /*# sourceMappingURL=style.css.map */

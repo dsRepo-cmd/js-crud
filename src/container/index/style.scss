@@ -27,19 +27,20 @@ main {
 .form {
   display: flex;
   flex-direction: column;
-  padding: s.space(4);
+  padding: s.space(4) s.space(15);
   gap: s.space(8);
-  min-width: 50%;
-  min-width: s.space(100);
-
+  // min-width: 50%;
+  // min-width: s.space(100);
+  align-items: center;
   border: 1px solid s.color('ligth');
-  border-radius: 5px;
+  border-radius: 15px;
+  box-shadow: 3px 1px 10px 1px rgba(158, 158, 158, 0.252);
 
   &__title {
     font-size: 20px;
     font-weight: bold;
     padding-bottom: s.space(1);
-    border-bottom: 1px solid s.color('ligth');
+    // border-bottom: 1px solid s.color('ligth');
   }
   &__content {
     display: grid;
@@ -78,5 +79,17 @@ main {
 
 .forms {
   display: flex;
-  gap: s.space(5);
+  justify-content: center;
+  gap: s.space(20);
+}
+
+.list {
+  margin: auto;
+  min-width: 40%;
+  &__button {
+    text-decoration: none;
+  }
+}
+.danger {
+  color: s.color('danger');
 }

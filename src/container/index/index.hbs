@@ -69,7 +69,7 @@
     </div>
   </section>
 
-  <section>
+  <section class='list'>
     <div class='form'>
       <h1 class='form__title'>Users list</h1>
       <div class='user-list'>
@@ -84,8 +84,15 @@
                   |
                   {{login}}
                   |
-                  <a href='/?id={{id}}' id='{{id}}'>{{id}}</a>
-                  <a href='/user-delete?id={{id}}'>(delete)</a>
+                  <a
+                    class='list__button'
+                    href='/?id={{id}}'
+                    id='{{id}}'
+                  >{{id}}</a>
+                  <a
+                    class='list__button danger'
+                    href='/user-delete?id={{id}}'
+                  >(delete)</a>
                 </li>
               {{/each}}
             </ul>
