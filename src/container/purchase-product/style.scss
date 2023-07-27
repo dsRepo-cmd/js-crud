@@ -22,11 +22,16 @@
 .product-info {
   margin: auto;
   display: flex;
+  justify-content: center;
   grid-template-columns: 1fr;
   justify-items: start;
-  gap: s.space(5);
+  gap: s.space(15);
+}
+.product-info__form {
+  margin-bottom: s.space(15);
 }
 .product-info__content {
+  max-width: 600px;
   display: grid;
   align-items: center;
   justify-items: start;
@@ -34,9 +39,11 @@
 }
 
 .product-info__image {
+  max-width: 600px;
   max-height: 400px;
   width: 50%;
   border-radius: 10px;
+  margin-top: s.space(25);
 }
 
 .product-info__title {

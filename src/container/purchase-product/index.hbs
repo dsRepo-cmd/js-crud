@@ -1,38 +1,33 @@
-
 <main class='main'>
-  {{>heading title='Інформація про товар'}}
 
-    {{#with data.product}}
-      <form method="POST" action='/purshase-create?id={{id}}' class="">
-        <div class='product-info'>
-            <img src='{{img}}' alt='{{title}}' class='product-info__image' />
-            <div class="product-info__content">
-            <h2 class='product-info__title'>{{title}}</h2>
-            <p class='product-info__subtitle'>{{description}}</p>
+  {{#with data.product}}
+    <form method='POST' action='/purshase-create?id={{id}}' class='product-info__form'>
+      <div class='product-info'>
+        <img src='{{img}}' alt='{{title}}' class='product-info__image' />
+        <div class='product-info__content'>
+          
+          {{>heading title=title}}
 
-            {{>divider}}
-            {{#each category}}
-              <span
-                class='product-info__category product-info__category--{{id}}'
-              >{{text}}</span>
-            {{/each}}
+          {{>divider}}
 
-               {{>divider}}
+          <p class='product-info__subtitle'>{{description}}</p>
 
-               {{>field label='Кількість' type='number' value='1' name='amount' }}
-              
-              {{>button text='Купити зараз' price=price}}
-              </div>
+          {{>divider}}
+
+          {{>field label='Кількість' type='number' value='1' name='amount' }}
+
+          {{>button text='Купити зараз' price=price}}
         </div>
-      </form>
-    {{/with}}
+      </div>
+    </form>
+  {{/with}}
   {{>heading title='Інші товари' info="Комп'ютери та ноутбуки"}}
 
   <div class='product-list'>
-
     {{#each data.list}}
       {{>purchase-product data=this}}
     {{/each}}
   </div>
 
 </main>
+

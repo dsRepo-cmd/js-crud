@@ -39,9 +39,10 @@ class Product {
   }
 }
 
+// ================================================================
 Product.add(
   'https://picsum.photos/600/800',
-  `1 Комп'ютер Artline Gaming (X43v31)`,
+  `Комп'ютер Artline Gaming (X43v31)`,
   `Комп'ютер Artline Gaming (X43v31) AMD Ryzen 5 3600 / Gigabyte B450M S2H / 16ГБ DDR4 / MSI GeForce RTX 3050 AERO 8G OC / SSD 480ГБ + HDD 1ТБ / 600W GPS-600A`,
   [
     { id: 1, text: 'Готовий до відправки' },
@@ -52,8 +53,8 @@ Product.add(
 )
 Product.add(
   'https://picsum.photos/600/800',
-  `2 Комп'ютер Artline Gaming (X43v31)`,
-  `Комп'ютер Artline Gaming (X43v31) AMD Ryzen 5 3600 / Gigabyte B450M S2H / 16ГБ DDR4 / MSI GeForce RTX 3050 AERO 8G OC / SSD 480ГБ + HDD 1ТБ / 600W GPS-600A`,
+  `Комп'ютер COBRA Advanced `,
+  `Комп'ютер COBRA Advanced (A55.16.H1S4.36.16983) AMD Ryzen 5 5500/ DDR4 16ГБ / HDD 1ТБ + SSD 480ГБ / nVidia GeForce RTX 3060 12ГБ`,
   [
     { id: 1, text: 'Готовий до відправки' },
     { id: 2, text: 'Топ продажів' },
@@ -63,8 +64,8 @@ Product.add(
 )
 Product.add(
   'https://picsum.photos/600/800',
-  `3 Комп'ютер Artline Gaming (X43v31)`,
-  `Комп'ютер Artline Gaming (X43v31) AMD Ryzen 5 3600 / Gigabyte B450M S2H / 16ГБ DDR4 / MSI GeForce RTX 3050 AERO 8G OC / SSD 480ГБ + HDD 1ТБ / 600W GPS-600A`,
+  `Комп'ютер ARTLINE Gaming X77 v39 `,
+  `Комп'ютер ARTLINE Gaming X77 v39 (X77v39) Intel Core i7-10700F / RAM 32ГБ / SSD 1ТБ / nVidia GeForce RTX 3070 8ГБ`,
   [
     { id: 1, text: 'Готовий до відправки' },
     { id: 2, text: 'Топ продажів' },
@@ -74,8 +75,8 @@ Product.add(
 )
 Product.add(
   'https://picsum.photos/600/800',
-  `4 Комп'ютер Artline Gaming (X43v31)`,
-  `Комп'ютер Artline Gaming (X43v31) AMD Ryzen 5 3600 / Gigabyte B450M S2H / 16ГБ DDR4 / MSI GeForce RTX 3050 AERO 8G OC / SSD 480ГБ + HDD 1ТБ / 600W GPS-600A`,
+  `Комп'ютер ARTLINE Gaming X37`,
+  `Комп'ютер ARTLINE Gaming X37 v41 (X37v41) Intel Core i5-10400F / RAM 16ГБ / SSD 1ТБ / nVidia GeForce RTX 3050 8ГБ`,
   [
     { id: 1, text: 'Готовий до відправки' },
     { id: 2, text: 'Топ продажів' },
@@ -83,6 +84,7 @@ Product.add(
   4500,
   10,
 )
+// ================================================================
 class Promocode {
   static #list = []
   constructor(name, factor) {
@@ -101,15 +103,18 @@ class Promocode {
   static calc = (promo, price) => price * promo.factor
 }
 
+// ================================================================
 Promocode.add('SUMMER2023', 0.9)
 Promocode.add('DISCOUNT50', 0.5)
 Promocode.add('SALE25', 0.75)
 
+// ================================================================
 class Purcase {
   static DELIVERY_PRICE = 150
   static #BONUS_FACTOR = 0.1
 
   static #list = []
+
   static #count = 0
 
   static #bonusAccount = new Map()
@@ -189,7 +194,25 @@ class Purcase {
     }
   }
 }
+// ================================================================
 
+Purcase.add(
+  {
+    id: 1,
+    firstname: 'Іван',
+    lastname: 'Іванов',
+    phone: '123456789',
+    email: 'ivan@gmail.com',
+    comment: 'Загорнути бантиком',
+    bonus: 100,
+    promocode: { name: 'SALE25', factor: 0.75 },
+    totalPrice: 3862.5,
+    productPrice: 5000,
+    deliveryPrice: 150,
+    amount: 1,
+  },
+  Product.getById(1),
+)
 // ================================================================
 
 router.get('/', function (req, res) {
@@ -377,7 +400,7 @@ router.post('/purshase-submit', function (req, res) {
     },
     product,
   )
-  // console.log(purchase)
+  console.log(purchase)
   res.render('alert', {
     style: 'alert',
     title: 'Успішно',
@@ -389,7 +412,9 @@ router.post('/purshase-submit', function (req, res) {
 // ================================================================
 router.get('/purchase-list', function (req, res) {
   const list = Purcase.getList()
+
   // console.log('=========>', list)
+
   res.render('purchase-list', {
     style: 'purchase-list',
     data: {
@@ -434,14 +459,29 @@ router.post('/purshase-success', function (req, res) {
   const list = req.body
 
   const data = Purcase.updateByID(id, list)
-  const updatedList = Purcase.getById(id)
-  console.log('=========>', data, id, updatedList)
 
-  if (!data) {
-    res.render('alert', {
+  // const updatedList = Purcase.getById(id)
+  // console.log('=========>', data, id, updatedList)
+
+  if (
+    list.firstname.length < 1 ||
+    list.lastname.length < 1 ||
+    list.email.length < 1 ||
+    list.phone.length < 1
+  ) {
+    return res.render('alert', {
       style: 'alert',
       title: 'Помилка',
-      info: 'не вдалося відредагувати данні',
+      info: 'Поля не повинні бути пустими',
+      href: `/purchase-list`,
+    })
+  }
+
+  if (!data) {
+    return res.render('alert', {
+      style: 'alert',
+      title: 'Помилка',
+      info: 'Не вдалося відредагувати данні',
       href: `/purchase-list`,
     })
   }

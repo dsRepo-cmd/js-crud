@@ -16,6 +16,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
   gap: s.space(5);
   padding: s.space(5);
   border: 1px solid s.color(border);
