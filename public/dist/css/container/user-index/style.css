@@ -1,0 +1,67 @@
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 32px;
+  min-width: 50%;
+  min-width: 400px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.form__title {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ddd;
+}
+.form__content {
+  display: grid;
+  justify-content: start;
+  gap: 24px;
+}
+.form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form__label {
+  font-size: 14px;
+}
+.form__input {
+  border: 1px solid #ddd;
+  padding: 8px;
+  border-radius: 5px;
+}
+.form__button {
+  transition: opacity 0.7s;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  padding: 8px;
+  border-radius: 20px;
+  background-color: #ddd;
+}
+.form__button:hover {
+  opacity: 0.7;
+}
+.form__button:active {
+  opacity: 0.3;
+}
+
+.user-list li {
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.forms {
+  display: flex;
+  gap: 20px;
+}
+
+/*# sourceMappingURL=style.css.map */
