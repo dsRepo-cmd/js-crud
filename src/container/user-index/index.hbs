@@ -1,0 +1,98 @@
+{{! <header class='header'>
+  <a class='header__button' href='/product-list'>Модуль product</a>
+</header> }}
+<main class='main'>
+
+  <section class='forms'>
+    <div class='form'>
+      <h1 class='form__title'>Create user</h1>
+      <form method='POST' action='/user-create'>
+        <div class='form__content'>
+          <div class='form__field'>
+            <label for='email' class='form__label'>
+              Email address:
+            </label>
+            <input type='email' name='email' id='' class='form__input' />
+          </div>
+          <div class='form__field'>
+            <label for='password' class='form__label'>
+              Login:
+            </label>
+            <input type='login' name='login' id='' class='form__input' />
+          </div>
+          <div class='form__field'>
+            <label for='login' class='form__label'>
+              Password:
+            </label>
+            <input type='password' name='password' id='' class='form__input' />
+          </div>
+          <button class='form__button'>Create</button>
+        </div>
+      </form>
+    </div>
+
+    <div class='form'>
+      <h1 class='form__title'>Update user email</h1>
+      <form method='POST' action='/user-update'>
+        <div class='form__content'>
+          <div class='form__field'>
+            <label for='id' class='form__label'>
+              ID:
+            </label>
+            <input
+              value='{{editList.id}}'
+              type='id'
+              name='id'
+              class='form__input'
+            />
+          </div>
+          <div class='form__field'>
+            <label for='email' class='form__label'>
+              Email address:
+            </label>
+            <input
+              value='{{editList.email}}'
+              type='email'
+              name='email'
+              class='form__input'
+            />
+          </div>
+          <div class='form__field'>
+            <label for='password' class='form__label'>
+              Password:
+            </label>
+            <input type='password' name='password' class='form__input' />
+          </div>
+          <button class='form__button'>Send</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section>
+    <div class='form'>
+      <h1 class='form__title'>Users list</h1>
+      <div class='user-list'>
+        {{#with data.users}}
+          {{#if isEmpty}}
+            <mark>Empty</mark>
+          {{else}}
+            <ul>
+              {{#each list}}
+                <li>
+                  {{email}}
+                  |
+                  {{login}}
+                  |
+                  <a href='/?id={{id}}' id='{{id}}'>{{id}}</a>
+                  <a href='/user-delete?id={{id}}'>(delete)</a>
+                </li>
+              {{/each}}
+            </ul>
+          {{/if}}
+        {{/with}}
+      </div>
+    </div>
+  </section>
+
+</main>
