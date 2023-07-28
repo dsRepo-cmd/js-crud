@@ -1,0 +1,28 @@
+@use '../../lib/service.scss' as s;
+
+@use '../../lib/spotify.scss' as spotify;
+
+.add-button {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  align-items: center;
+  gap: s.space(6);
+  color: s.color(ligth);
+  font-size: 18px;
+  padding: s.space(8);
+}
+
+.home-link {
+  display: flex;
+  gap: s.space(6);
+  align-items: center;
+
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  &__title {
+    font-size: 16px;
+    color: s.color(ligth);
+  }
+}

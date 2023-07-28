@@ -1,0 +1,18 @@
+@use '../../lib/service.scss' as s;
+
+@use '../../lib/spotify.scss' as spotify;
+
+.choose {
+  display: flex;
+  flex-direction: column;
+  gap: s.space(10);
+}
+.choose__content {
+  display: flex;
+  flex-direction: column;
+  gap: s.space(4);
+}
+.choose__item {
+  display: flex;
+  gap: s.space(10);
+}

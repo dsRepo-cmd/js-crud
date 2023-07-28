@@ -1,0 +1,40 @@
+@use '../../lib/service.scss' as s;
+
+@use '../../lib/spotify.scss' as spotify;
+
+.header {
+  display: flex;
+  background-color: s.color(black);
+  box-shadow: none;
+  justify-content: flex-end;
+  margin-bottom: 200px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: s.space(10);
+}
+
+.form__field {
+  font-size: 68px;
+  text-align: center;
+  width: 100%;
+  padding: s.space(4);
+  border-bottom: 1px solid s.color(border);
+}
+
+.form__button {
+  background-color: s.color(success);
+  font-size: 20px;
+  color: s.color(black);
+  padding: s.space(4) s.space(10);
+  border-radius: 50px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  max-width: fit-content;
+  transition: opacity 0.6s;
+  &:hover {
+    opacity: 0.6;
+  }
+}
