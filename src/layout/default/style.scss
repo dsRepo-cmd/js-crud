@@ -2,23 +2,23 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
-.header {
-  display: flex;
-  gap: s.space(3);
-  padding: s.space(3);
-  background-color: s.color('dark');
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-  margin-bottom: s.space(2);
+// .header {
+//   display: flex;
+//   gap: s.space(3);
+//   padding: s.space(3);
+//   background-color: s.color('dark');
+//   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+//     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+//   margin-bottom: s.space(2);
 
-  &__button {
-    @include s.click;
-    text-decoration: none;
-    color: s.color('dark');
-    background-color: s.color('ligth');
-    padding: s.space(1);
-    border-radius: 5px;
-    min-width: 100px;
-    text-align: center;
-  }
-}
+//   &__button {
+//     @include s.click;
+//     text-decoration: none;
+//     color: s.color('dark');
+//     background-color: s.color('ligth');
+//     padding: s.space(1);
+//     border-radius: 5px;
+//     min-width: 100px;
+//     text-align: center;
+//   }
+// }

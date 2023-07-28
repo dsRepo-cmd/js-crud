@@ -1,0 +1,146 @@
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.6s;
+}
+a:hover {
+  opacity: 0.6;
+}
+
+body {
+  background-color: #121212;
+  height: 100%;
+}
+
+.main {
+  background-color: #121212;
+  height: 100%;
+  color: #ddd;
+  display: flex;
+  justify-content: center;
+  padding: 32px 8px;
+}
+
+.main__content {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.title {
+  font-size: 24px;
+}
+
+.title--center {
+  text-align: center;
+}
+
+.track {
+  display: grid;
+  grid-template-columns: 92px 1fr 42px;
+  gap: 28px;
+  align-items: center;
+}
+.track__list {
+  display: grid;
+  gap: 28px;
+  padding: 32px;
+}
+.track__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+.track__name {
+  font-size: 24px;
+  color: #ddd;
+}
+.track__author {
+  font-size: 16px;
+  color: #a3a3a3;
+}
+.track__image {
+  border-radius: 4px;
+}
+
+.playlist {
+  display: flex;
+  grid-template-columns: 92fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+.playlist__list {
+  display: grid;
+  gap: 28px;
+  padding: 32px;
+}
+.playlist__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+.playlist__name {
+  font-size: 24px;
+  color: #ddd;
+}
+.playlist__amount {
+  font-size: 16px;
+  color: #a3a3a3;
+}
+.playlist__image {
+  border-radius: 4px;
+}
+
+.library {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+.library__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px 28px;
+  padding: 0 32px;
+}
+.library__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+.library__name {
+  font-size: 24px;
+  color: #ddd;
+}
+.library__amount {
+  font-size: 16px;
+  color: #a3a3a3;
+}
+.library__image {
+  border-radius: 4px;
+}
+
+.add-button {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  align-items: center;
+  gap: 24px;
+  color: #ddd;
+  font-size: 18px;
+}
+
+.track__list {
+  background-color: #282828;
+  border-radius: 8px;
+}
+
+/*# sourceMappingURL=style.css.map */

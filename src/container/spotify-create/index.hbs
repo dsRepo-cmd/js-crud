@@ -1,0 +1,14 @@
+<main class='main'>
+  <div class='main__content'>
+    <header class='header'>
+      <a href='/'>
+        <img src='/svg/cross_back.svg' alt='' />
+      </a>
+    </header>
+    <h1 class='title title--center'>Назвіть плейліст</h1>
+    <form action='/spotify-create{{#if data.isMix}}?isMix=true{{/if}} ' class='form' method='POST'>
+      <input required name="name" class='form__field' placeholder='Назва' type='text' />
+      <button class='form__button'>Створити</button>
+    </form>
+  </div>
+</main>
