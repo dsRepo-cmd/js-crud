@@ -56,6 +56,7 @@ Track.create(
   'https://picsum.photos/100/100',
 )
 
+// console.log(Track.getList())
 class Playlist {
   static #list = []
   constructor(name) {
@@ -106,39 +107,16 @@ class Playlist {
 Playlist.makeMix(Playlist.create('Pop'))
 Playlist.makeMix(Playlist.create('Electric'))
 Playlist.makeMix(Playlist.create('Jazz'))
-// ========================================================================
-
-function getDeclension(number, form1, form2, form3) {
-  let remainder = number % 100;
-  remainder = remainder >= 11 && remainder <= 19 ? 0 : number % 10;
-
-  let form =
-    remainder === 1
-      ? form1
-      : remainder >= 2 && remainder <= 4
-      ? form2
-      : form3;
-
-  return `${number} ${form}`;
-}
-
-let singularForm = "пісня";
-let dualForm = "пісні";
-let pluralForm = "пісень";
 
 // ================================================================
 router.get('/', function (req, res) {
   const list = Playlist.getList()
-  value= ''
+
   // console.log(list)
   res.render('spotify-index', {
     style: 'spotify-index',
     data: {
-      list: list.map(({ tracks, ...rest }) => ({
-        ...rest,
-        amount: getDeclension(tracks.length, singularForm, dualForm, pluralForm),
-      })),
-      value,
+      list: list,
     },
   })
 })
@@ -316,7 +294,7 @@ router.get('/spotify-search', function (req, res) {
     data: {
       list: list.map(({ tracks, ...rest }) => ({
         ...rest,
-        amount:getDeclension(tracks.length, singularForm, dualForm, pluralForm),
+        amount: tracks.length,
       })),
       value,
     },
@@ -335,7 +313,7 @@ router.post('/spotify-search', function (req, res) {
     data: {
       list: list.map(({ tracks, ...rest }) => ({
         ...rest,
-        amount:getDeclension(tracks.length, singularForm, dualForm, pluralForm),
+        amount: tracks.length,
       })),
       value,
     },
