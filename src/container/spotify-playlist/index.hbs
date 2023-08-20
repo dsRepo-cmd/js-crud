@@ -1,29 +1,29 @@
-<a class='home-link' href='/'>
+<a class='home-link' href='/spotify'>
   <img height='25px' width='25px' src='/svg/spotify_home.svg' alt='' />
-  <span class="home-link__title" >Моя бібліотека</span>
+  <span class="home-link__title">Моя бібліотека</span>
 </a>
 <main class='main'>
   {{#with data}}
-    <div class='main__content'>
-      <h1 class='title title--center'>{{name}}</h1>
-      <a href='/spotify-playlist-add?id={{playlistId}}' class='add-button'>
+  <div class='main__content'>
+    <h1 class='title title--center'>{{name}}</h1>
+    <a href='/spotify-playlist-add?id={{playlistId}}' class='add-button'>
       <img src='/svg/add_button.svg' alt='' />
       Додати до плейліста</a>
 
-      <ul class='track__list'>
-        {{#each tracks}}
-          <li class='track'>
-            <img class='track__image' src='{{image}}' alt='{{name}}' />
-            <div class='track__content'>
-              <strong class='track__name'>{{name}}</strong>
-              <em class='track__author'>{{author}}</em>
-            </div>
-            <a href='/spotify-track-delete?playlistId={{../playlistId}}&trackId={{id}}'>
-            <img  src='/svg/delete_button.svg' alt='' />
-          </a>
-          </li>
-        {{/each}}
-      </ul>
-    </div>
+    <ul class='track__list'>
+      {{#each tracks}}
+      <li class='track'>
+        <img class='track__image' src='{{image}}' alt='{{name}}' />
+        <div class='track__content'>
+          <strong class='track__name'>{{name}}</strong>
+          <em class='track__author'>{{author}}</em>
+        </div>
+        <a href='/spotify-track-delete?playlistId={{../playlistId}}&trackId={{id}}'>
+          <img src='/svg/delete_button.svg' alt='' />
+        </a>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
   {{/with}}
 </main>

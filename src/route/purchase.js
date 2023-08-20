@@ -85,6 +85,7 @@ Product.add(
   10,
 )
 // ================================================================
+
 class Promocode {
   static #list = []
   constructor(name, factor) {
@@ -109,6 +110,7 @@ Promocode.add('DISCOUNT50', 0.5)
 Promocode.add('SALE25', 0.75)
 
 // ================================================================
+
 class Purcase {
   static DELIVERY_PRICE = 150
   static #BONUS_FACTOR = 0.1
@@ -194,8 +196,8 @@ class Purcase {
     }
   }
 }
-// ================================================================
 
+// ================================================================
 Purcase.add(
   {
     id: 1,
@@ -215,7 +217,7 @@ Purcase.add(
 )
 // ================================================================
 
-router.get('/', function (req, res) {
+router.get('/purchase', function (req, res) {
   // console.log(Product.getList())
   res.render('purchase-index', {
     style: 'purchase-index',
@@ -226,6 +228,7 @@ router.get('/', function (req, res) {
 })
 
 // ================================================================
+
 router.get('/purchase-product', function (req, res) {
   const id = Number(req.query.id)
   // console.log(Product.getById(id))
@@ -410,6 +413,7 @@ router.post('/purshase-submit', function (req, res) {
 })
 
 // ================================================================
+
 router.get('/purchase-list', function (req, res) {
   const list = Purcase.getList()
 
@@ -424,6 +428,7 @@ router.get('/purchase-list', function (req, res) {
 })
 
 // ================================================================
+
 router.post('/purchase-list', function (req, res) {
   const id = Number(req.query.id)
   const list = Purcase.getById(id)
@@ -439,6 +444,7 @@ router.post('/purchase-list', function (req, res) {
 })
 
 // ================================================================
+
 router.post('/purshase-edit', function (req, res) {
   const id = Number(req.query.id)
   const list = Purcase.getById(id)
@@ -454,6 +460,7 @@ router.post('/purshase-edit', function (req, res) {
 })
 
 // ================================================================
+
 router.post('/purshase-success', function (req, res) {
   const id = Number(req.query.id)
   const list = req.body

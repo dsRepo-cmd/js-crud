@@ -1,5 +1,9 @@
 {{!-- {{> heading}} --}}
 
 <main class='main'>
-  index
+  <div class="list">
+    {{#each list}}
+    <a class="list__button" href="{{href}}">{{name}}</a>
+    {{/each}}
+  </div>
 </main>

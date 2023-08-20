@@ -106,37 +106,40 @@ class Playlist {
 Playlist.makeMix(Playlist.create('Pop'))
 Playlist.makeMix(Playlist.create('Electric'))
 Playlist.makeMix(Playlist.create('Jazz'))
+
 // ========================================================================
 
 function getDeclension(number, form1, form2, form3) {
-  let remainder = number % 100;
-  remainder = remainder >= 11 && remainder <= 19 ? 0 : number % 10;
+  let remainder = number % 100
+  remainder = remainder >= 11 && remainder <= 19 ? 0 : number % 10
 
   let form =
-    remainder === 1
-      ? form1
-      : remainder >= 2 && remainder <= 4
-      ? form2
-      : form3;
+    remainder === 1 ? form1 : remainder >= 2 && remainder <= 4 ? form2 : form3
 
-  return `${number} ${form}`;
+  return `${number} ${form}`
 }
 
-let singularForm = "пісня";
-let dualForm = "пісні";
-let pluralForm = "пісень";
+let singularForm = 'пісня'
+let dualForm = 'пісні'
+let pluralForm = 'пісень'
 
 // ================================================================
-router.get('/', function (req, res) {
+
+router.get('/spotify', function (req, res) {
   const list = Playlist.getList()
-  value= ''
+  value = ''
   // console.log(list)
   res.render('spotify-index', {
     style: 'spotify-index',
     data: {
       list: list.map(({ tracks, ...rest }) => ({
         ...rest,
-        amount: getDeclension(tracks.length, singularForm, dualForm, pluralForm),
+        amount: getDeclension(
+          tracks.length,
+          singularForm,
+          dualForm,
+          pluralForm,
+        ),
       })),
       value,
     },
@@ -144,6 +147,7 @@ router.get('/', function (req, res) {
 })
 
 // ================================================================
+
 router.get('/spotify-choose', function (req, res) {
   res.render('spotify-choose', {
     style: 'spotify-choose',
@@ -152,6 +156,7 @@ router.get('/spotify-choose', function (req, res) {
 })
 
 // ================================================================
+
 router.get('/spotify-create', function (req, res) {
   const isMix = !!req.query.isMix
   // console.log(isMix)
@@ -164,6 +169,7 @@ router.get('/spotify-create', function (req, res) {
 })
 
 // ================================================================
+
 router.post('/spotify-create', function (req, res) {
   const isMix = !!req.query.isMix
 
@@ -196,6 +202,7 @@ router.post('/spotify-create', function (req, res) {
 })
 
 // ================================================================
+
 router.get('/spotify-playlist', function (req, res) {
   const id = Number(req.query.id)
 
@@ -220,6 +227,7 @@ router.get('/spotify-playlist', function (req, res) {
 })
 
 // ================================================================
+
 router.get('/spotify-track-delete', function (req, res) {
   const playlistId = Number(req.query.playlistId)
   const trackId = Number(req.query.trackId)
@@ -248,6 +256,7 @@ router.get('/spotify-track-delete', function (req, res) {
 })
 
 // ================================================================
+
 router.get('/spotify-playlist-add', function (req, res) {
   const playlistId = Number(req.query.id)
 
@@ -275,6 +284,7 @@ router.get('/spotify-playlist-add', function (req, res) {
 })
 
 // ================================================================
+
 router.get('/spotify-track-add', function (req, res) {
   const playlistId = Number(req.query.playlistId)
   const trackId = Number(req.query.trackId)
@@ -305,6 +315,7 @@ router.get('/spotify-track-add', function (req, res) {
 })
 
 // ================================================================
+
 router.get('/spotify-search', function (req, res) {
   const value = ''
 
@@ -316,31 +327,43 @@ router.get('/spotify-search', function (req, res) {
     data: {
       list: list.map(({ tracks, ...rest }) => ({
         ...rest,
-        amount:getDeclension(tracks.length, singularForm, dualForm, pluralForm),
+        amount: getDeclension(
+          tracks.length,
+          singularForm,
+          dualForm,
+          pluralForm,
+        ),
       })),
       value,
     },
   })
 })
 
-// ===================================================
+// ================================================================
+
 router.post('/spotify-search', function (req, res) {
   const value = req.body.value || ''
 
   const list = Playlist.findListByValue(value)
-  
+
   console.log('==================>', value, list)
   res.render('spotify-search', {
     style: 'spotify-search',
     data: {
       list: list.map(({ tracks, ...rest }) => ({
         ...rest,
-        amount:getDeclension(tracks.length, singularForm, dualForm, pluralForm),
+        amount: getDeclension(
+          tracks.length,
+          singularForm,
+          dualForm,
+          pluralForm,
+        ),
       })),
       value,
     },
   })
 })
 
-// ===================================================
+// ================================================================
+
 module.exports = router

@@ -2,6 +2,8 @@ main {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  width: 600px;
+  margin: 60px auto;
 }
 
 .form {
@@ -9,8 +11,7 @@ main {
   flex-direction: column;
   padding: 16px;
   gap: 32px;
-  min-width: 50%;
-  min-width: 400px;
+  width: 100%;
   border: 1px solid #ddd;
   border-radius: 5px;
 }
@@ -43,8 +44,9 @@ main {
   cursor: pointer;
   border: 1px solid #ddd;
   padding: 8px;
-  border-radius: 20px;
-  background-color: #ddd;
+  border-radius: 5px;
+  background-color: #0059ff;
+  color: #fff;
 }
 .form__button:hover {
   opacity: 0.7;
@@ -52,16 +54,56 @@ main {
 .form__button:active {
   opacity: 0.3;
 }
+.form__img {
+  border-radius: 5px;
+}
 
-.user-list li {
-  padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+.user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.user-list__item {
+  display: grid;
+  grid-template-columns: 1fr 50px;
+  gap: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 16px;
+}
+.user-list__id-button {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr 1fr;
+  transition: opacity 0.7s;
+  cursor: pointer;
+  text-decoration: none;
+}
+.user-list__id-button:hover {
+  opacity: 0.7;
+}
+.user-list__id-button:active {
+  opacity: 0.3;
+}
+.user-list__del-button {
+  transition: opacity 0.7s;
+  cursor: pointer;
+  text-decoration: none;
+  color: red;
+}
+.user-list__del-button:hover {
+  opacity: 0.7;
+}
+.user-list__del-button:active {
+  opacity: 0.3;
+}
+.user-list__part {
+  word-wrap: break-word;
 }
 
 .forms {
   display: flex;
   gap: 20px;
+  justify-content: space-around;
 }
 
 /*# sourceMappingURL=style.css.map */

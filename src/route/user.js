@@ -6,10 +6,12 @@ const router = express.Router()
 class User {
   static #list = []
 
-  constructor(email, login, password) {
+  constructor(email, login, password, age = 0, role) {
     this.email = email
     this.login = login
     this.password = password
+    this.age = age
+    this.role = role
     this.id = new Date().getTime()
   }
 
@@ -45,73 +47,18 @@ class User {
       return false
     }
   }
-  static update = (user, { email }) => {
+  static update = (user, { email, age, role }) => {
     if (email) {
       user.email = email
+      user.age = age
+      user.role = role
     }
   }
 }
-// ================================================================
-class Product {
-  static #list = []
 
-  constructor(name, price, description) {
-    this.id = Math.floor(Math.random() * 90000) + 10000
-    this.createDate = new Date().toISOString()
-    this.name = name
-    this.price = price
-    this.description = description
-  }
-
-  static getList() {
-    return this.#list
-  }
-
-  static add(product) {
-    if (product) {
-      this.#list.push(product)
-      return true
-    }
-    return false
-  }
-
-  static getById(id) {
-    return this.#list.find((product) => product.id === id)
-  }
-
-  static updateById(id, data) {
-    const product = this.getById(id)
-    if (product) {
-      if (data.name) {
-        product.name = data.name
-      }
-      if (data.price) {
-        product.price = data.price
-      }
-      if (data.description) {
-        product.description = data.description
-      }
-
-      return true
-    }
-    return false
-  }
-
-  static deleteById(id) {
-    const index = this.#list.findIndex((product) => product.id === id)
-    if (index !== -1) {
-      this.#list.splice(index, 1)
-      return true
-    }
-    return false
-  }
-}
-
+User.add(new User('Ivan@mail.com', 'Ivan', '', 20, 'admin'))
 // ================================================================
 
-// router.get Створює нам один ентпоїнт
-
-// ↙️ тут вводимо шлях (PATH) до сторінки
 router.get('/user', function (req, res) {
   // res.render генерує нам HTML сторінку
 
@@ -119,9 +66,9 @@ router.get('/user', function (req, res) {
   // ↙️ cюди вводимо назву файлу з сontainer
   const { id } = req.query
   const editList = User.getById(Number(id))
-  res.render('index', {
+  res.render('user-index', {
     // вказуємо назву папки контейнера, в якій знаходяться наші стилі
-    style: 'index',
+    style: 'user-index',
     editList,
     data: {
       users: {
@@ -134,145 +81,59 @@ router.get('/user', function (req, res) {
 })
 
 // ================================================================
-router.post('/user-create', function (req, res) {
-  const { email, login, password } = req.body
 
-  const user = new User(email, login, password)
+router.post('/user-create', function (req, res) {
+  const { email, login, password, age, role } = req.body
+
+  const user = new User(email, login, password, age, role)
 
   User.add(user)
 
-  res.render('user-success-info', {
-    style: 'user-success-info',
-    info: 'Email updated',
+  res.render('alert', {
+    style: 'alert',
+    title: 'Успіх',
+    href: '/user',
+    info: 'Користувач створений',
   })
 })
 
 // ================================================================
+
 router.get('/user-delete', function (req, res) {
   const { id } = req.query
 
   User.deleteById(Number(id))
 
-  res.render('user-success-info', {
-    style: 'user-success-info',
-    info: 'User deleted',
+  res.render('alert', {
+    style: 'alert',
+    title: 'Успіх',
+    href: '/user',
+    info: 'Користувач видалений',
   })
 })
 
 // ================================================================
 
 router.post('/user-update', function (req, res) {
-  const { email, password, id } = req.body
+  const { email, password, id, age, role } = req.body
 
   let result = false
 
   const user = User.getById(Number(id))
 
   if (user.veryfyPassword(password)) {
-    User.update(user, { email })
+    User.update(user, { email, age, role })
     result = true
   }
 
-  res.render('user-success-info', {
-    style: 'user-success-info',
+  res.render('alert', {
+    style: 'alert',
+    title: 'Успіх',
+    href: '/user',
     info: result ? 'Email updated' : 'Error updated',
   })
 })
 
-// ================================================================
-
-router.get('/product-create', function (req, res) {
-  res.render('product-create', {
-    style: 'product-create',
-    info: '',
-  })
-})
-
-// ================================================================
-router.post('/product-create', function (req, res) {
-  const { name, price, description } = req.body
-
-  const product = new Product(name, price, description)
-
-  result = false
-
-  result = Product.add(product)
-
-  res.render('alert', {
-    style: 'alert',
-    title: 'Створення товару',
-    href: '/product-list',
-    info: result ? 'Товар створено успішно' : 'Не вдалося створити товар',
-  })
-})
-
-// ================================================================
-
-router.get('/product-list', function (req, res) {
-  const list = Product.getList()
-
-  res.render('product-list', {
-    style: 'product-list',
-    info: 'User deleted',
-    list,
-  })
-})
-
-// ================================================================
-router.get('/product-edit', function (req, res) {
-  const { id } = req.query
-
-  const product = Product.getById(Number(id))
-
-  res.render('product-edit', {
-    style: 'product-edit',
-    product: product,
-    id: product.id,
-  })
-})
-
-// ================================================================
-
-router.post('/product-edit', function (req, res) {
-  const { name, price, id, description } = req.body
-
-  Product.getById(Number(id))
-
-  const data = {
-    name: name,
-    price: price,
-    description: description,
-  }
-
-  let result = false
-
-  result = Product.updateById(Number(id), data)
-
-  res.render('alert', {
-    style: 'alert',
-    href: '/product-list',
-    title: 'Редагування товару',
-    info: result
-      ? 'Дані товару оновлено успішно'
-      : 'Не вдалося оновити дані товару',
-  })
-})
-
-// ================================================================
-router.get('/product-delete', function (req, res) {
-  const { id } = req.query
-
-  let result = false
-
-  result = Product.deleteById(Number(id))
-
-  res.render('alert', {
-    style: 'alert',
-    title: 'Видалення товару',
-    href: '/product-list',
-    info: result ? 'Товар успішно видалено' : 'Не вдалося видалити товар',
-  })
-})
 // ================================================================
 
 module.exports = router
